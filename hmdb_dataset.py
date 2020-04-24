@@ -40,7 +40,7 @@ class HMDB(data_utl.Dataset):
                 if len(l) <= 5:
                     continue
                 v,c = l.strip().split(' ')
-                v = mode+'_'+v.split('.')[0]+'.mp4'
+                v = v.split('.')[0]+'.mp4'
                 if c not in self.class_to_id:
                     self.class_to_id[c] = cid
                     self.id_to_class.append(c)

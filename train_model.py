@@ -9,11 +9,14 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-mode', type=str, help='rgb or flow')
+parser.add_argument('-model', type=str)
+parser.add_argument('-system', type=str, help='v100,k80,titanx,ultra')
 parser.add_argument('-exp_name', type=str)
 parser.add_argument('-batch_size', type=int, default=24)
 parser.add_argument('-length', type=int, default=16)
 parser.add_argument('-learnable', type=str, default='[0,0,0,0,0]')
 parser.add_argument('-niter', type=int)
+parser.add_argument('-nworkers', type=int)
 
 args = parser.parse_args()
 
@@ -41,11 +44,11 @@ batch_size = args.batch_size
 
 if args.system == 'hmdb':
     from hmdb_dataset import HMDB as DS
-    dataseta = DS('data/hmdb/split1_train.txt', '/data/hmdb/', model=args.model, mode=args.mode, length=args.length)
-    dl = torch.utils.data.DataLoader(dataseta, batch_size=batch_size, shuffle=True, num_workers=8, pin_memory=True)
+    dataseta = DS('data/hmdb/split1_train.txt', 'data/hmdb/', model=args.model, mode=args.mode, length=args.length)
+    dl = torch.utils.data.DataLoader(dataseta, batch_size=batch_size, shuffle=True, num_workers=args.nworkers, pin_memory=True)
     
-    dataset = DS('data/hmdb/split1_test.txt', '/data/hmdb/', model=args.model, mode=args.mode, length=args.length, c2i=dataseta.class_to_id)
-    vdl = torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=8, pin_memory=True)
+    dataset = DS('data/hmdb/split1_test.txt', 'data/hmdb/', model=args.model, mode=args.mode, length=args.length, c2i=dataseta.class_to_id)
+    vdl = torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=args.nworkers, pin_memory=True)
     dataloader = {'train':dl, 'val':vdl}
 
 
