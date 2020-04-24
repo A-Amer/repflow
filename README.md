@@ -1,12 +1,12 @@
 # Representation Flow for Action Recognition
 
-This repository contains the code for our [CVPR 2019 paper](https://arxiv.org/abs/1810.01455), [Project Page](https://piergiaj.github.io/rep-flow-site/):
+This repository contains the code for  [CVPR 2019 paper](https://arxiv.org/abs/1810.01455), [Project Page](https://piergiaj.github.io/rep-flow-site/):
 
     AJ Piergiovanni and Michael S. Ryoo
     "Representation Flow for Action Recognition"
     in CVPR 2019
 
-If you find the code useful for your research, please cite our paper:
+paper citation:
 
         @inproceedings{repflow2019,
               title={Representation Flow for Action Recognition},
@@ -14,6 +14,8 @@ If you find the code useful for your research, please cite our paper:
               author={AJ Piergiovanni and Michael S. Ryoo},
               year={2019}
         }
+
+Forked from :https://github.com/piergiaj/representation-flow-cvpr19/tree/master/data
 
 
 # Representation Flow Layer
@@ -24,10 +26,9 @@ We introduce the representation flow layer, which can be found in [rep_flow_laye
 
 # Activity Recognition Experiments
 ![model overview](/examples/flow-in-network.png?raw=true "model overview")
+pretrained models for HMDB and Kinetics in [models/](models).
 
-We include our pretrained models for HMDB and Kinetics in [models/](models).
-
-We tested our models on HMDB and Kinetics and provide the files and class labes used in [data](/data/).
+ models on HMDB and Kinetics and provide the files and class labes used in [data](/data/).
 
 ## Results
 
@@ -59,7 +60,7 @@ Examples of representation flows for different channels for "clapping." Some cha
 
 # Requirements
 
-Our code has been tested on Ubuntu 14.04 and 16.04 using python 3.6, [PyTorch](pytorch.org) version 0.4.1 with a Titan X GPU. Our data loading uses [lintel](https://github.com/dukebw/lintel) to extract frames from the video.
+Using python 3.6, [PyTorch](pytorch.org) version 0.4.1 and uses [lintel](https://github.com/dukebw/lintel) to extract frames from the video.
 
 
 # Setup
